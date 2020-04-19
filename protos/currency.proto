@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service Currency {
+    rpc GetRate(RateRequest) returns (RateResponse); 
+}
+
+message RateRequest {
+    Currencies Base = 1 [json_name = "base"];
+    Currencies Destination = 2 [json_name = "destination"];
+}
+
+message RateResponse {
+    double Rate = 1 [json_name = "rate"];
+}
+
+enum Currencies {
+    EUR=0;
+    USD=1;
+    GBP=2;
+    AUD=3;
+    INR=4;
+    MYR=5;
+}
